@@ -24,7 +24,7 @@ html, body { height: 100%; background: var(--black); color: var(--text); font-fa
 /* ── Topbar ── */
 .topbar {
   display: flex; align-items: center; gap: 1rem;
-  padding: 0 1.25rem; height: 48px;
+  padding: 0 1.5rem; height: 48px;
   border-bottom: 1px solid var(--gray-3);
   background: var(--gray-6);
   position: sticky; top: 0; z-index: 10;
