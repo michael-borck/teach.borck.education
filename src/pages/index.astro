@@ -7,9 +7,7 @@ const teachingData = teaching;
 <Base title="teach.borck.education" description="Workshops, courses, and executive education by Michael Borck.">
 
 <div class="topbar">
-  <a class="topbar-logo" href="/">
-    teach<span class="dot">.</span><span class="sub">borck</span><span class="dot">.dev</span>
-  </a>
+  <a class="topbar-logo" href="/">teach<span class="dot">.</span>borck<span class="dot">.</span><span class="sub">education</span></a>
   <div class="topbar-search">
     <input id="search-input" type="search" placeholder="Search sessions…" />
   </div>
@@ -29,113 +27,60 @@ const teachingData = teaching;
   </nav>
 </div>
 
-<div class="shell">
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <button class="sidebar-toggle" data-section="university" onclick="toggleSection('university')">
-      University <span class="sidebar-chevron">›</span>
-    </button>
-    <div class="sidebar-section-items" id="section-university">
-      {teachingData.filter(t => t.category === 'university').map(t => (
-        <a class="sidebar-item" data-teach={t.id} href="#">
-          {t.name}
-        </a>
-      ))}
-    </div>
-    <div class="sidebar-divider"></div>
+<main class="main" id="main">
 
-    <button class="sidebar-toggle" data-section="workshop" onclick="toggleSection('workshop')">
-      Workshops <span class="sidebar-chevron">›</span>
-    </button>
-    <div class="sidebar-section-items" id="section-workshop">
-      {teachingData.filter(t => t.category === 'workshop').map(t => (
-        <a class="sidebar-item" data-teach={t.id} href="#">
-          {t.name}
-        </a>
-      ))}
-    </div>
-    <div class="sidebar-divider"></div>
-
-    <button class="sidebar-toggle" data-section="exec-ed" onclick="toggleSection('exec-ed')">
-      Exec Education <span class="sidebar-chevron">›</span>
-    </button>
-    <div class="sidebar-section-items" id="section-exec-ed">
-      {teachingData.filter(t => t.category === 'exec-ed').map(t => (
-        <a class="sidebar-item" data-teach={t.id} href="#">
-          {t.name}
-        </a>
-      ))}
-    </div>
-    <div class="sidebar-divider"></div>
-
-    <button class="sidebar-toggle" data-section="research" onclick="toggleSection('research')">
-      Research <span class="sidebar-chevron">›</span>
-    </button>
-    <div class="sidebar-section-items" id="section-research">
-      {teachingData.filter(t => t.category === 'research').map(t => (
-        <a class="sidebar-item" data-teach={t.id} href="#">
-          {t.name}
-        </a>
-      ))}
-    </div>
-  </aside>
-
-  <!-- Main -->
-  <main class="main" id="main">
-
-    <!-- Home view -->
-    <div class="home-view" id="home-view">
-      <div class="home-hero">
-        <p class="home-eyebrow">teach.borck.education</p>
-        <h1 class="home-title">Workshops, courses &amp;<br><span class="home-accent">executive education</span></h1>
-        <p class="home-sub">AI literacy, curriculum design, and leadership programmes — from undergraduate courses to boardroom masterclasses.</p>
-        <div class="home-cats">
-          {categories.filter(c => c.value !== 'all').map(c => (
-            <button class="home-cat-btn" data-cat={c.value}>{c.label}</button>
-          ))}
-        </div>
-        <button class="home-browse-btn" id="browse-btn">
-          Browse all {teachingData.length} sessions →
-        </button>
-        <div class="home-trust">
-          <span class="home-trust-item">Faculty &amp; Staff Development</span>
-          <span class="home-trust-item">·</span>
-          <span class="home-trust-item">Industry &amp; Executive</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Grid view -->
-    <div class="grid-view hidden" id="grid-view">
-      <div class="grid-header">
-        <span class="grid-title" id="grid-label">All sessions</span>
-        <span class="grid-count" id="grid-count"></span>
-      </div>
-      <div class="teach-grid" id="teach-grid">
-        {teachingData.map(t => (
-          <a class="grid-card" data-teach={t.id} href="#" data-cat={t.category}>
-            <div class="grid-card-name">{t.name}</div>
-            <div class="grid-card-desc">{t.description}</div>
-            <div class="grid-card-footer">
-              <span class="cat-badge">{t.category === 'exec-ed' ? 'Exec Ed' : t.category.charAt(0).toUpperCase() + t.category.slice(1)}</span>
-              <span class="format-badge">{t.format}</span>
-            </div>
-          </a>
+  <!-- Home view -->
+  <div class="home-view" id="home-view">
+    <div class="home-hero">
+      <p class="home-eyebrow">teach.borck.education</p>
+      <h1 class="home-title">Workshops, courses &amp;<br><span class="home-accent">executive education</span></h1>
+      <p class="home-sub">AI literacy, curriculum design, and leadership programmes — from undergraduate courses to boardroom masterclasses.</p>
+      <div class="home-cats">
+        {categories.filter(c => c.value !== 'all').map(c => (
+          <button class="home-cat-btn" data-cat={c.value}>{c.label}</button>
         ))}
-        <div class="no-results hidden" id="no-results">No sessions match your search.</div>
+      </div>
+      <button class="home-browse-btn" id="browse-btn">
+        Browse all {teachingData.length} sessions →
+      </button>
+      <div class="home-trust">
+        <span class="home-trust-item">Faculty &amp; Staff Development</span>
+        <span class="home-trust-item">·</span>
+        <span class="home-trust-item">Industry &amp; Executive</span>
       </div>
     </div>
+  </div>
 
-    <!-- Detail view -->
-    <div class="detail-view hidden" id="detail-view">
-      <div class="detail-back-bar">
-        <button class="back-btn" id="back-btn">← Back</button>
-      </div>
-      <div id="detail-content"></div>
+  <!-- Grid view -->
+  <div class="grid-view hidden" id="grid-view">
+    <div class="grid-header">
+      <span class="grid-title" id="grid-label">All sessions</span>
+      <span class="grid-count" id="grid-count"></span>
     </div>
+    <div class="teach-grid" id="teach-grid">
+      {teachingData.map(t => (
+        <a class="grid-card" data-teach={t.id} href="#" data-cat={t.category}>
+          <div class="grid-card-name">{t.name}</div>
+          <div class="grid-card-desc">{t.description}</div>
+          <div class="grid-card-footer">
+            <span class="cat-badge">{t.category === 'exec-ed' ? 'Exec Ed' : t.category.charAt(0).toUpperCase() + t.category.slice(1)}</span>
+            <span class="format-badge">{t.format}</span>
+          </div>
+        </a>
+      ))}
+      <div class="no-results hidden" id="no-results">No sessions match your search.</div>
+    </div>
+  </div>
 
-  </main>
-</div>
+  <!-- Detail view -->
+  <div class="detail-view hidden" id="detail-view">
+    <div class="detail-back-bar">
+      <button class="back-btn" id="back-btn">← Back</button>
+    </div>
+    <div id="detail-content"></div>
+  </div>
+
+</main>
 
 <footer class="site-footer">
   <div class="footer-links">
@@ -158,7 +103,6 @@ function showHome() {
   document.getElementById('home-view').classList.remove('hidden');
   document.getElementById('grid-view').classList.add('hidden');
   document.getElementById('detail-view').classList.add('hidden');
-  document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
 }
 
 function showGrid() {
@@ -175,25 +119,10 @@ function showDetail() {
   document.getElementById('detail-view').classList.remove('hidden');
 }
 
-function toggleSection(section, forceOpen) {
-  const items = document.getElementById('section-' + section);
-  const btn = document.querySelector('[data-section="' + section + '"]');
-  if (!items || !btn) return;
-  const shouldOpen = forceOpen !== undefined ? forceOpen : !items.classList.contains('open');
-  items.classList.toggle('open', shouldOpen);
-  btn.classList.toggle('open', shouldOpen);
-}
-
 function openTeach(id) {
   activeId = id;
   const t = teachingData.find(x => x.id === id);
   if (!t) return;
-
-  document.querySelectorAll('.sidebar-item').forEach(el => {
-    el.classList.toggle('active', el.dataset.teach === id);
-  });
-
-  toggleSection(t.category, true);
 
   const catLabel = {
     university: 'University',
@@ -255,10 +184,6 @@ function applyFilters() {
     research: 'Research'
   }[cat] || cat;
   document.getElementById('grid-label').textContent = catLabel;
-
-  if (cat !== 'all') {
-    toggleSection(cat, true);
-  }
 }
 
 // Events
@@ -289,11 +214,6 @@ document.addEventListener('click', e => {
   if (!el) return;
   e.preventDefault();
   openTeach(el.dataset.teach);
-});
-
-// Sidebar toggle buttons (inline onclick won't work with CSP, use delegation)
-document.querySelectorAll('.sidebar-toggle').forEach(btn => {
-  btn.addEventListener('click', () => toggleSection(btn.dataset.section));
 });
 </script>
 
