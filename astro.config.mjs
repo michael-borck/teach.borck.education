@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://teach.borck.dev',
+  site: 'https://teach.borck.education',
 });
