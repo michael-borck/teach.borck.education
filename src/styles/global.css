@@ -126,6 +126,6 @@ html, body { height: 100%; background: var(--black); color: var(--text); font-fa
 
 /* ── Footer ── */
 .site-footer { margin-top: 4rem; padding: 2rem 1.5rem; border-top: 1px solid var(--gray-3); text-align: center; color: var(--gray-2); font-size: 0.78rem; }
-.site-footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.site-footer .footer-links { display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
 .site-footer a { color: var(--gray-1); text-decoration: none; }
 .site-footer a:hover { color: var(--accent); }
